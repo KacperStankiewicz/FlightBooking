@@ -1,6 +1,5 @@
 package com.example.FlightBooking.DTO;
 
-import com.example.FlightBooking.DTO.FlightDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,5 +8,7 @@ import java.io.Serializable;
 public class BookingDto implements Serializable {
     private final Integer id;
     private final FlightDto flight;
-    private final Integer seatsBooked;
+    private final UserDto user;
+    private final String seatsBooked;
+    private final Integer numOfSeats;
 }

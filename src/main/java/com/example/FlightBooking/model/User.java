@@ -13,7 +13,7 @@ public class User {
     @Column(name = "full_name", nullable = false, length = 45)
     private String fullName;
 
-    @Column(name = "phone", nullable = false, length = 15)
+    @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
     @Column(name = "city", nullable = false, length = 45)
@@ -22,7 +22,7 @@ public class User {
     @Column(name = "street", nullable = false, length = 45)
     private String street;
 
-    @Column(name = "postal_code", nullable = false, length = 7)
+    @Column(name = "postal_code", length = 15)
     private String postalCode;
 
     @Column(name = "email", nullable = false, length = 45)

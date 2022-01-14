@@ -1,6 +1,5 @@
 package com.example.FlightBooking.DTO;
 
-import com.example.FlightBooking.DTO.AirplaneDto;
 import lombok.Data;
 
 import java.io.Serializable;

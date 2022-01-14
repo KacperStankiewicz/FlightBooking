@@ -14,15 +14,38 @@ public class Booking {
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
 
-    @Column(name = "seats_booked", nullable = false)
-    private Integer seatsBooked;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public Integer getSeatsBooked() {
+    @Column(name = "seats_booked", nullable = false, length = 45)
+    private String seatsBooked;
+
+    @Column(name = "num_of_seats", nullable = false)
+    private Integer numOfSeats;
+
+    public Integer getNumOfSeats() {
+        return numOfSeats;
+    }
+
+    public void setNumOfSeats(Integer numOfSeats) {
+        this.numOfSeats = numOfSeats;
+    }
+
+    public String getSeatsBooked() {
         return seatsBooked;
     }
 
-    public void setSeatsBooked(Integer seatsBooked) {
+    public void setSeatsBooked(String seatsBooked) {
         this.seatsBooked = seatsBooked;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Flight getFlight() {
