@@ -1,17 +1,22 @@
 package com.example.FlightBooking.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.Instant;
 
-@Data
-public class FlightDto implements Serializable {
-    private final Integer id;
-    private final String origin;
-    private final String destination;
-    private final Instant departureTime;
-    private final Instant arrivalTime;
-    private final Double price;
-    private final AirplaneDto airplane;
+@Getter
+@Setter
+@AllArgsConstructor
+public class FlightDto {
+    private Integer id;
+    private String origin;
+    private String destination;
+    private Instant departureTime;
+    private Instant arrivalTime;
+    private Double price;
+    private AirplaneDto airplane;
 }

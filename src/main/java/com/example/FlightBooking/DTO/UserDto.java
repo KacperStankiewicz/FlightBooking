@@ -1,17 +1,22 @@
 package com.example.FlightBooking.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
-@Data
-public class UserDto implements Serializable {
-    private final Integer id;
-    private final String fullName;
-    private final String phone;
-    private final String city;
-    private final String street;
-    private final String postalCode;
-    private final String email;
-    private final String userRole;
+@Getter
+@Setter
+@AllArgsConstructor
+public class UserDto {
+    private Integer id;
+    private String fullName;
+    private String phone;
+    private String city;
+    private String street;
+    private String postalCode;
+    private String email;
+    private String userRole;
 }

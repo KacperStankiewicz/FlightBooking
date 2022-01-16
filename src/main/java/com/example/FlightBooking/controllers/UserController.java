@@ -1,8 +1,10 @@
 package com.example.FlightBooking.controllers;
 
 import com.example.FlightBooking.DTO.BookingDto;
+import com.example.FlightBooking.model.Booking;
 import com.example.FlightBooking.repos.UserRepo;
 import com.example.FlightBooking.services.UserService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,4 +27,5 @@ public class UserController {
     public ResponseEntity userAddBooking(@RequestBody BookingDto booking){
         return userService.makeBooking(booking);
     }
+
 }
