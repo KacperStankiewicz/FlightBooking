@@ -1,22 +1,22 @@
 package com.example.FlightBooking.DTO;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
 public class FlightDto {
     private Integer id;
     private String origin;
     private String destination;
-    private Instant departureTime;
-    private Instant arrivalTime;
+    private Timestamp departureTime;
+    private Timestamp arrivalTime;
     private Double price;
     private AirplaneDto airplane;
 }

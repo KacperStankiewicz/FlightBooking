@@ -1,7 +1,7 @@
 package com.example.FlightBooking.model;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "flight")
@@ -18,10 +18,10 @@ public class Flight {
     private String destination;
 
     @Column(name = "departure_time", nullable = false)
-    private Instant departureTime;
+    private Timestamp departureTime;
 
     @Column(name = "arrival_time", nullable = false)
-    private Instant arrivalTime;
+    private Timestamp arrivalTime;
 
     @Column(name = "price", nullable = false)
     private Double price;
@@ -46,19 +46,19 @@ public class Flight {
         this.price = price;
     }
 
-    public Instant getArrivalTime() {
+    public Timestamp getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Instant arrivalTime) {
+    public void setArrivalTime(Timestamp arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
-    public Instant getDepartureTime() {
+    public Timestamp getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Instant departureTime) {
+    public void setDepartureTime(Timestamp departureTime) {
         this.departureTime = departureTime;
     }
 

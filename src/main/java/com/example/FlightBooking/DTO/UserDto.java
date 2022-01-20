@@ -1,15 +1,13 @@
 package com.example.FlightBooking.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
 public class UserDto {
     private Integer id;
     private String fullName;
