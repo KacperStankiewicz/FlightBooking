@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Booker</title>
+    <link rel="stylesheet" th:href="@{/flights.css}">
+</head>
+<body>
+    <table>
+        <thead>
+        <h2>Flights</h2>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Departures at</th>
+            <th>Arrives at</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="flight: ${flights}">
+            <td th:text="${flight.origin}"></td>
+            <td th:text="${flight.destination}"></td>
+            <td th:text="${flight.departureTime}"></td>
+            <td th:text="${flight.arrivalTime}"></td>
+            <td th:text="${flight.price}"></td>
+            <td><form action="#" method="get" th:action="@{/makeBooking/{id}(id=${flight.id})}">
+<!--                <input type="hidden" name="flight_id" th:value="${flight.id}">-->
+                <input type="submit" value="Buy this flight">
+            </form></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+<footer th:insert="links.html"></footer>
+</html>

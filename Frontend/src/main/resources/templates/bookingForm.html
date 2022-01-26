@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+</head>
+<body>
+    <form action="#" method="post" th:action="@{/make/booking}" th:object="${booking}">
+        <table>
+            <tr>
+                <td><label>Number of seats</label></td>
+                <td><input type="number" th:field="${booking.numOfSeats}"></td>
+            </tr>
+
+            <tr>
+                <td><label>Number of row, and seat</label></td>
+                <td><input type="text" th:field="${booking.seatsBooked}"></td>
+
+                <td><input type="hidden" name="flight_id" th:value="${flight_id}"></td>
+                <td><input type="hidden" name="user_id" th:value="1"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="submit"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

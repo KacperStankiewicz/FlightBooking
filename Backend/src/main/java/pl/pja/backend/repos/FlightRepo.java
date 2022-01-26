@@ -29,4 +29,9 @@ public class FlightRepo {
             return HttpStatus.NOT_MODIFIED;
         }
     }
+
+    public Flight getFlightById(int id){
+        return (Flight) entityManager.createNativeQuery("select * from flight where flight_id=?",Flight.class)
+                .setParameter(1,id).getSingleResult();
+    }
 }

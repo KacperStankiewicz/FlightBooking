@@ -32,8 +32,8 @@ public class UserRepo {
             entityManager.joinTransaction();
             entityManager.createNativeQuery("insert into bookings(flight_id,user_id,seats_booked,num_of_seats)" +
                             " values (?,?,?,?)")
-                    .setParameter(1,bookingDto.getFlight().getId())
-                    .setParameter(2,bookingDto.getUser().getId())
+                    .setParameter(1,bookingDto.getFlight_id())
+                    .setParameter(2,bookingDto.getUser_id())
                     .setParameter(3,bookingDto.getSeatsBooked())
                     .setParameter(4,bookingDto.getNumOfSeats())
                     .executeUpdate();

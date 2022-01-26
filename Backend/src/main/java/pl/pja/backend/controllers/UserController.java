@@ -1,5 +1,6 @@
 package pl.pja.backend.controllers;
 
+import org.springframework.http.HttpStatus;
 import pl.pja.backend.DTO.BookingDto;
 import pl.pja.backend.DTO.FlightDto;
 import pl.pja.backend.services.FlightService;
@@ -29,6 +30,7 @@ public class UserController {
         return ResponseEntity.status(userService.makeBooking(booking)).build();
     }
 
+
     @GetMapping("/bookings")
     public ResponseEntity userBookings(@RequestParam int id){
         return ResponseEntity.ok(userService.userBookings(id));
@@ -38,8 +40,6 @@ public class UserController {
     public ResponseEntity userInfo(@RequestParam int id) {
         return ResponseEntity.ok(userService.userInfo(id));
     }
-
-
 
     @GetMapping("flights")
     public ResponseEntity getFlights(@RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -56,7 +56,7 @@ public class UserController {
                 .price(price)
                 .build();
 
-        return ResponseEntity.ok(flightService.getFlightsByPage(page,flight));
+        return new ResponseEntity<>(flightService.getFlightsByPage(page,flight), HttpStatus.OK);
     }
 
 }

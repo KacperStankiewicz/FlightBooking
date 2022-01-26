@@ -2,6 +2,7 @@ package pl.pja.backend.services;
 
 import pl.pja.backend.DTO.FlightDto;
 import pl.pja.backend.mappers.DtoMapper;
+import pl.pja.backend.model.Flight;
 import pl.pja.backend.repos.FlightRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -57,4 +58,5 @@ public class FlightService {
     public HttpStatus deleteFlight(int id){
         return flightRepo.deleteFlightById(id);
     }
+
 }

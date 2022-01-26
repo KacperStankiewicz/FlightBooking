@@ -1,17 +1,20 @@
 package pl.pja.backend.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class AirplaneDto {
+    @JsonProperty("airplane_id")
     private Integer id;
+    @JsonProperty("model")
     private String model;
+    @JsonProperty("seats")
     private Integer seats;
+    @JsonProperty("plane_status")
     private String planeStatus;
 }

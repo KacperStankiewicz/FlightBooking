@@ -1,4 +1,4 @@
-//package com.example.FlightBooking.config;
+//package pl.pja.backend.config;
 //
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

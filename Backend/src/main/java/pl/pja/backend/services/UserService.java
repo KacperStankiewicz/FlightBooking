@@ -3,6 +3,7 @@ package pl.pja.backend.services;
 import pl.pja.backend.DTO.BookingDto;
 import pl.pja.backend.DTO.UserDto;
 import pl.pja.backend.mappers.DtoMapper;
+import pl.pja.backend.repos.FlightRepo;
 import pl.pja.backend.repos.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepo userRepo;
+    private final FlightRepo flightRepo;
     private final DtoMapper dtoMapper;
 
     private String makeSearchQuery(UserDto u){
@@ -90,7 +92,18 @@ public class UserService {
 
 
     public HttpStatus makeBooking(BookingDto bookingDto){
-       return userRepo.makeBooking(bookingDto);
+
+       return userRepo.makeBooking(makeProperBookingDtoObject(bookingDto));
+    }
+
+    private BookingDto makeProperBookingDtoObject(BookingDto b) {
+        if(b.getFlight() == null){
+            b.setFlight(dtoMapper.mapToFlightDto(flightRepo.getFlightById(b.getFlight_id())));
+        }
+        if(b.getUser() == null){
+            b.setUser(dtoMapper.mapToUserDto(userRepo.getUserByID(b.getUser_id())));
+        }
+        return b;
     }
 
     public List<UserDto> userInfo(int id){
