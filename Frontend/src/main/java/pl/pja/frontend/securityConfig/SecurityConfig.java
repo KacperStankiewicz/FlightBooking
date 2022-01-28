@@ -43,16 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("makeBooking").hasAnyRole("USER","ADMIN")
-                .antMatchers("post/make/booking").hasAnyRole("USER","ADMIN")
-                .antMatchers("get/bookings").hasAnyRole("USER","ADMIN")
-                .antMatchers("updateUser").hasAnyRole("USER","ADMIN")
-                .antMatchers("flights").hasAnyRole("USER","ADMIN")
+                .antMatchers("/","homepage").permitAll()
                 .antMatchers("userInfo").hasRole("ADMIN")
                 .antMatchers("updateFlight").hasRole("ADMIN")
                 .antMatchers("deleteFlight").hasRole("ADMIN")
                 .antMatchers("deleteUser").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
 //                .loginPage("/login")

@@ -76,6 +76,19 @@ public class FrontController {
         return "redirect:/login";
     }
 
+    @GetMapping("info")
+    public String getUserInfo(Model model,@AuthenticationPrincipal MyUserPrincipal user){
+        UserDto[] users = webClient.get()
+                .uri("user/info?id="+user.getId())
+                .retrieve()
+                .bodyToMono(UserDto[].class)
+                .block();
+        List<UserDto> u = List.of(users);
+        model.addAttribute("user",u);
+
+        return "aboutMe";
+    }
+
     @GetMapping("makeBooking")
     public String redirectToBookingForm(@RequestParam int flight_id, @AuthenticationPrincipal MyUserPrincipal user, Model model){
         model.addAttribute("flight_id",flight_id);
@@ -121,7 +134,7 @@ public class FrontController {
     }
 
     @PostMapping("updateUser")
-    public String updateuser(@ModelAttribute UserDto user){
+    public String updateUser(@ModelAttribute UserDto user){
         webClient.put()
                 .uri("admin/user/update")
                 .body(Mono.just(user),UserDto.class)
@@ -175,7 +188,7 @@ public class FrontController {
     @GetMapping("userInfo")
     public String getUsers(Model model){
         UserDto[] users = webClient.get()
-                .uri("user/info")
+                .uri("user/info?id=0")
                 .retrieve()
                 .bodyToMono(UserDto[].class)
                 .block();

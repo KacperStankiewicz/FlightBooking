@@ -31,7 +31,6 @@
             </form>
         </td>
 
-        <div th:if="${#authentication.getPrincipal() != null}">
             <td th:if="${#authentication.getPrincipal().getRole() == 'ADMIN'}">
                 <form action="#" method="get" th:action="@{deleteFlight}">
                     <input type="hidden" name="flight_id" th:value="${flight.id}">
@@ -39,14 +38,13 @@
                 </form>
             </td>
 
-
             <td th:if="${#authentication.getPrincipal().getRole() == 'ADMIN'}">
                 <form action="#" method="get" th:action="@{updateFlight}">
                     <input type="hidden" name="flight_id" th:value="${flight.id}">
                     <input type="submit" value="Modify">
                 </form>
             </td>
-        </div>
+
     </tr>
     </tbody>
 </table>
