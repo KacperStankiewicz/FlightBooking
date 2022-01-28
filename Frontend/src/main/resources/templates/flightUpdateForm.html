@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update flight</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{updateFlight}" th:object="${flight}">
+    <table>
+        <tr>
+            <td><label>Origin</label></td>
+            <td><input type="text" th:field="${flight.origin}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Destination</label></td>
+            <td><input type="text" th:field="${flight.destination}"></td>
+        </tr>
+
+        <tr>
+        <td><label>Departure time</label></td>
+        <td><input type="datetime-local" th:field="${flight.departureTime}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Arrival time</label></td>
+            <td><input type="datetime-local" th:field="${flight.arrivalTime}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Price</label></td>
+            <td><input type="number" th:field="${flight.price}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="hidden" th:field="${flight.id} "></td>
+            <td><input type="submit" value="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -8,3 +8,6 @@ table{
 tr:nth-child(even) {
     background-color: #D6EEEE;
 }
+tr:nth-child(odd) {
+    background-color: #c3ffd6;
+}

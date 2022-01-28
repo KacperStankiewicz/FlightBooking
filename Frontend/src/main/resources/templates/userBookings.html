@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your bookings</title>
+    <link rel="stylesheet" th:href="@{/flights.css}">
+</head>
+<body>
+<table>
+    <thead>
+    <h2>Bookings</h2>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departures at</th>
+        <th>Arrives at</th>
+        <th>Price</th>
+        <th>Ordered seats:</th>
+    </tr>
+    <tr th:each="booking: ${bookings}">
+        <td th:text="${booking.flight.origin}"></td>
+        <td th:text="${booking.flight.destination}"></td>
+        <td th:text="${booking.flight.departureTime}"></td>
+        <td th:text="${booking.flight.arrivalTime}"></td>
+        <td th:text="${booking.flight.price}"></td>
+        <td th:text="${booking.seatsBooked}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<footer th:insert="links.html"></footer>
+</html>

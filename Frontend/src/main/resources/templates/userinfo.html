@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userinfo</title>
+</head>
+<body>
+<table>
+    <thead>
+    <h2>Flights</h2>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>phone</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>postal Code</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.fullName}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.city}"></td>
+        <td th:text="${user.street}"></td>
+        <td th:text="${user.postalCode}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.userRole}"></td>
+        <td>
+            <form action="#" method="get" th:action="@{deleteUser}">
+                <input type="hidden" name="user_id" th:value="${user.id}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+
+        <td>
+            <form action="#" method="get" th:action="@{updateUser}">
+                <input type="hidden" name="user_id" th:value="${user.id}">
+                <input type="submit" value="Modify">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

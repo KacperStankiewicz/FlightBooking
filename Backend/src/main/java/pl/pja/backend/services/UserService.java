@@ -1,24 +1,35 @@
 package pl.pja.backend.services;
 
-import pl.pja.backend.DTO.BookingDto;
-import pl.pja.backend.DTO.UserDto;
-import pl.pja.backend.mappers.DtoMapper;
-import pl.pja.backend.repos.FlightRepo;
-import pl.pja.backend.repos.UserRepo;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import pl.pja.database.contracts.BookingDto;
+import pl.pja.database.contracts.UserDto;
+import pl.pja.database.mappers.DtoMapper;
+import pl.pja.database.repos.FlightRepo;
+import pl.pja.database.repos.UserRepo;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class UserService {
-    private final UserRepo userRepo;
-    private final FlightRepo flightRepo;
-    private final DtoMapper dtoMapper;
+
+    private UserRepo userRepo;
+    private FlightRepo flightRepo;
+    private DtoMapper dtoMapper;
+
+    @Autowired
+    public UserService(UserRepo userRepo, FlightRepo flightRepo, DtoMapper dtoMapper) {
+        this.userRepo = userRepo;
+        this.flightRepo = flightRepo;
+        this.dtoMapper = dtoMapper;
+    }
 
     private String makeSearchQuery(UserDto u){
         String str = "";

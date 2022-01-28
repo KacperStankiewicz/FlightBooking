@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/register.css}">
+</head>
+<body>
+
+
+<form method="post" th:action="@{registration}" th:object="${newUser}">
+    <!--    <div th:if="${param.error}" class="alert alert-error">-->
+    <!--        Nieprawidłowe dane użytkownika.-->
+    <!--    </div>-->
+
+    <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="username"><b>Username</b></label>
+        <input id="username" name="username" type="text" maxlength="45" required th:field="${newUser.username}">
+
+
+        <label for="password"><b>Password</b></label>
+        <input name="password" id="password" type="password" maxlength="45" required th:field="${newUser.password}">
+
+
+        <label for="name"><b>Full name</b></label>
+        <input name="full_name" id="name" type="text" maxlength="45" required th:field="${newUser.fullName}">
+
+
+        <label for="phone"><b>Phone number</b></label>
+        <input name="phone" id="phone" type="text" maxlength="20" required th:field="${newUser.phone}">
+
+
+        <label for="city"><b>City</b></label>
+        <input name="city" id="city" type="text" maxlength="45" required th:field="${newUser.city}">
+
+
+        <label for="street"><b>Street</b></label>
+        <input name="street" id="street" type="text" maxlength="45" required th:field="${newUser.street}">
+
+
+        <label for="postal"><b>Postal code</b></label>
+        <input name="postal_code" id="postal" type="text" maxlength="15" required th:field="${newUser.postalCode}">
+
+
+        <label for="email"><b>E-mail</b></label>
+        <input name="email" id="email" type="email" maxlength="45" required th:field="${newUser.email}">
+        <hr>
+
+
+        <button type="submit" class="registerbtn">Register</button>
+        <!--    <input type="submit" value="Send">-->
+    </div>
+</form>
+
+<br>
+</body>
+</html>

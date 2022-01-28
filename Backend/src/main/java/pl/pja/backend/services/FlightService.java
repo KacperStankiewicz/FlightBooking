@@ -1,12 +1,11 @@
 package pl.pja.backend.services;
 
-import pl.pja.backend.DTO.FlightDto;
-import pl.pja.backend.mappers.DtoMapper;
-import pl.pja.backend.model.Flight;
-import pl.pja.backend.repos.FlightRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import pl.pja.database.contracts.FlightDto;
+import pl.pja.database.mappers.DtoMapper;
+import pl.pja.database.repos.FlightRepo;
 
 import java.util.List;
 import java.util.Objects;
@@ -45,6 +44,33 @@ public class FlightService {
         }else return str;
     }
 
+    private String makeUpdateQuery(FlightDto f){
+        String str = "";
+        if(f.getDestination() != null && !Objects.equals(f.getDestination(), "")){
+            str+="destination='"+f.getDestination()+ "',";
+        }
+
+        if(f.getOrigin() != null && !Objects.equals(f.getOrigin(), "")){
+            str+="origin='"+f.getOrigin()+ "',";
+        }
+
+        if(f.getDepartureTime() != null){
+            str+="departure_time='"+f.getDepartureTime()+ "',";
+        }
+
+        if(f.getArrivalTime() != null){
+            str+="arrival_time='"+f.getArrivalTime()+ "',";
+        }
+
+        if(f.getPrice() != null && !Objects.equals(f.getPrice(), (double) 0)){
+            str+="price='"+f.getPrice()+ "',";
+        }
+
+        if(!str.equals("")){
+            return str.substring(0,str.length()-1);
+        }else return str;
+    }
+
 
     public List<FlightDto> getFlightsByPage(Integer page, FlightDto flightDto){
         String query = "Select * from flight "+appendToQuery(flightDto) +
@@ -57,6 +83,10 @@ public class FlightService {
 
     public HttpStatus deleteFlight(int id){
         return flightRepo.deleteFlightById(id);
+    }
+
+    public HttpStatus updateFlight(FlightDto flightDto){
+        return flightRepo.updateFlight(makeUpdateQuery(flightDto),flightDto.getId());
     }
 
 }

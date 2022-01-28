@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form method="post" th:action="@{/login}">
+    <div th:if="${param.error}" class="alert alert-error">
+        Nieprawidłowe dane użytkownika.
+    </div>
+    <input name="username" type="text">
+    <input name="password" type="password">
+    <input type="submit" value="Send">
+</form><br>
+<a th:href="@{/register}"> Rejestracja</a>
+</body>
+</html>

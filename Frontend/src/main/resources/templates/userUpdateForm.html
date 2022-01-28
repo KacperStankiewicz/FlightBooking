@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user update</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{updateUser}" th:object="${user}">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input type="number" th:field="${user.fullName}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Phone</label></td>
+            <td><input type="text" th:field="${user.phone}"></td>
+        </tr>
+
+        <tr>
+            <td><label>city</label></td>
+            <td><input type="text" th:field="${user.city}"></td>
+        </tr>
+
+        <tr>
+            <td><label>street</label></td>
+            <td><input type="text" th:field="${user.street}"></td>
+        </tr>
+
+        <tr>
+            <td><label>postal code</label></td>
+            <td><input type="text" th:field="${user.postalCode}"></td>
+        </tr>
+
+        <tr>
+            <td><label>email</label></td>
+            <td><input type="email" th:field="${user.email}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="hidden" th:field="${user.id} "></td>
+            <td><input type="submit" value="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

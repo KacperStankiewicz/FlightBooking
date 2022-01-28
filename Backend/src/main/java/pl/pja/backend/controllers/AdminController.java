@@ -1,6 +1,7 @@
 package pl.pja.backend.controllers;
 
-import pl.pja.backend.DTO.UserDto;
+
+import org.springframework.stereotype.Component;
 import pl.pja.backend.services.FlightService;
 import pl.pja.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,12 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pl.pja.database.contracts.FlightDto;
+import pl.pja.database.contracts.UserDto;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("admin")
 @RequiredArgsConstructor
+@Component("backendAdminController")
 public class AdminController {
     private final UserService userService;
     private final FlightService flightService;
@@ -30,30 +34,18 @@ public class AdminController {
     }
 
     @PutMapping("/user/update")
-    public ResponseEntity<HttpStatus> updateUser(@RequestParam(required = false) String full_name,
-                                                 @RequestParam(required = false) int id,
-                                                 @RequestParam(required = false) String phone,
-                                                 @RequestParam(required = false) String city,
-                                                 @RequestParam(required = false) String street,
-                                                 @RequestParam(required = false) String postal_code,
-                                                 @RequestParam(required = false) String email,
-                                                 @RequestParam(required = false) String user_role) {
-        UserDto user = UserDto.builder()
-                .id(id)
-                .fullName(full_name)
-                .userRole(user_role)
-                .email(email)
-                .postalCode(postal_code)
-                .phone(phone)
-                .street(street)
-                .city(city)
-                .build();
+    public ResponseEntity<HttpStatus> updateUser(UserDto userDto) {
 
-        return ResponseEntity.status(userService.updateUser(user)).build();
+        return ResponseEntity.status(userService.updateUser(userDto)).build();
     }
 
     @DeleteMapping("flight/delete")
     public ResponseEntity<HttpStatus> deleteFlight(@RequestParam int id) {
         return ResponseEntity.status(flightService.deleteFlight(id)).build();
+    }
+
+    @PutMapping("flight/update")
+    public ResponseEntity<HttpStatus> updateFlight(@RequestBody FlightDto flightDto){
+        return ResponseEntity.status(flightService.updateFlight(flightDto)).build();
     }
 }
